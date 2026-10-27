@@ -1,0 +1,18 @@
+import csv
+students = [{"roll": "101", "name": "Alice", "department": "CSE"},
+            {"roll": "102", "name": "Bob", "department": "AI & ML"},
+            {"roll": "103", "name": "Charlie", "department": "AI & DS"}]
+course=("python",4)
+print("Course Name:",course)
+with open("students.csv", mode="w", newline="") as file:
+    fieldnames = ["roll", "name", "department","Marks"]
+    writer = csv.DictWriter(file, fieldnames=fieldnames)
+    writer.writeheader()
+    for student in students:
+        writer.writerow(student)
+print("Student data written to students.csv successfully.")
+with open("students.csv", mode="r") as file:
+    reader = csv.DictReader(file)
+
+    for row in reader:
+        print(f"{row['roll']}\t{row['name']}\t{row['department']},row['Marks']")
